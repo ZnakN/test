@@ -2,7 +2,6 @@
 
 namespace app\models;
 
-
 use Yii;
 use yii\base\Model;
 
@@ -14,7 +13,7 @@ use yii\base\Model;
 class SignForm extends Model {
   //put your code here
   public $username;
-  
+
   /**
    * @inheritdoc
    */
@@ -24,10 +23,9 @@ class SignForm extends Model {
       ['username', 'required'],
       ['username', 'unique', 'targetClass' => '\app\models\User', 'message' => 'This username has already been taken.'],
       ['username', 'string', 'min' => 2, 'max' => 255],
-      
     ];
   }
-  
+
   /**
    * Signs user up.
    *
@@ -38,14 +36,14 @@ class SignForm extends Model {
     if (!$this->validate()) {
       return null;
     }
-    
-    
+
+
     $user = new User();
     $user->username = $this->username;
     $user->setPassword($this->username);
     $user->generateAuthKey();
     $user->balans = 0;
-    
+
     return $user->save() ? $user : null;
   }
 }

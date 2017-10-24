@@ -2,11 +2,10 @@
 
 use yii\db\Migration;
 
-class m171018_205008_add_user_table extends Migration
-{
-    public function safeUp()
-    {
-        $tableOptions = null;
+class m171018_205008_add_user_table extends Migration {
+
+  public function safeUp() {
+    $tableOptions = null;
 
     if ($this->db->driverName === 'mysql') {
       $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=InnoDB';
@@ -19,16 +18,14 @@ class m171018_205008_add_user_table extends Migration
       'password_hash' => $this->string()->notNull(),
       'created_at' => $this->integer()->notNull(),
       'updated_at' => $this->integer()->notNull(),
-      'balans'=>$this->money()->defaultValue(0)
+      'balans' => $this->money()->defaultValue(0)
       ], $tableOptions);
   }
 
-    public function safeDown()
-    {
-      $this->dropTable('user');
-    }
-
-    /*
+  public function safeDown() {
+    $this->dropTable('user');
+  }
+  /*
     // Use up()/down() to run migration code without a transaction.
     public function up()
     {
@@ -37,9 +34,9 @@ class m171018_205008_add_user_table extends Migration
 
     public function down()
     {
-        echo "m171018_205008_add_user_table cannot be reverted.\n";
+    echo "m171018_205008_add_user_table cannot be reverted.\n";
 
-        return false;
+    return false;
     }
-    */
+   */
 }
