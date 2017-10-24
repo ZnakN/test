@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
   <h1><?= Html::encode($this->title) ?></h1>
   <?php if (!Yii::$app->user->isGuest): ?>
     <p  id="mkt">
-      <a href="/site/transfer/0" class="btn btn-default"  >Make transfer</a>
+      <a href="/site/transfer" class="btn btn-default"  >Transfer</a>
     </p>
   <?php endif; ?>
 

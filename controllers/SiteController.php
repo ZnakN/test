@@ -101,10 +101,10 @@ class SiteController extends Controller {
   /**
    * Signup action
    */
-  public function actionTransfer($id) {
+  public function actionTransfer($id = 0) {
     $model = new TransferForm();
     $user = User::findIdentity($id);
-    $model->username = $user->username;
+    $model->username = isset($user->username)?$user->username:'';
 
     if ($model->load(Yii::$app->request->post())) {
       if ($model->transfer()) {
